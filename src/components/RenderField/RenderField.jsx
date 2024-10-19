@@ -1,18 +1,5 @@
-function RenderField(field, formData, handleInputChange) {
+function RenderField({ field, formData, handleInputChange }) {
   switch (field.type) {
-    case "text":
-    case "number":
-      return (
-        <input
-          type={field.type}
-          name={field.name}
-          placeholder={field.placeholder}
-          value={formData[field.name] || ""}
-          onChange={(e) => handleInputChange(field.name, e.target.value)}
-          required={field.required}
-          className="mt-1 p-2 block w-full border border-gray-300 rounded"
-        />
-      );
     case "textarea":
       return (
         <textarea
@@ -21,7 +8,7 @@ function RenderField(field, formData, handleInputChange) {
           value={formData[field.name] || ""}
           onChange={(e) => handleInputChange(field.name, e.target.value)}
           required={field.required}
-          className="mt-1 p-2 block w-full border border-gray-300 rounded"
+          className="mt-1 p-2 block w-full shadow-md rounded"
         />
       );
     case "dropdown":
@@ -31,19 +18,19 @@ function RenderField(field, formData, handleInputChange) {
           value={formData[field.name] || ""}
           onChange={(e) => handleInputChange(field.name, e.target.value)}
           required={field.required}
-          className="mt-1 p-2 block w-full border border-gray-300 rounded"
+          className="mt-1 p-2 block w-full  shadow-md rounded"
         >
           <option value="">Select an option</option>
-          {field.options.map((option, idx) => (
-            <option key={idx} value={option}>
+          {field.options.map((option) => (
+            <option key={option} value={option}>
               {option}
             </option>
           ))}
         </select>
       );
     case "radio":
-      return field.options.map((option, idx) => (
-        <label key={idx} className="block">
+      return field.options.map((option) => (
+        <label key={option.value} className="inline-flex mr-2">
           <input
             type="radio"
             name={field.name}
@@ -56,8 +43,8 @@ function RenderField(field, formData, handleInputChange) {
         </label>
       ));
     case "checkbox":
-      return field.options.map((option, idx) => (
-        <label key={idx} className="block">
+      return field.options.map((option) => (
+        <label key={option.value} className="block">
           <input
             type="checkbox"
             name={field.name}
@@ -100,7 +87,17 @@ function RenderField(field, formData, handleInputChange) {
         </div>
       );
     default:
-      return null;
+      return (
+        <input
+          type={field.type}
+          name={field.name}
+          placeholder={field.placeholder}
+          value={formData[field.name] || ""}
+          onChange={(e) => handleInputChange(field.name, e.target.value)}
+          required={field.required}
+          className="mt-1 p-2 block w-full  shadow-md rounded"
+        />
+      );
   }
 }
 
