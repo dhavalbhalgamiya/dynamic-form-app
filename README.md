@@ -8,7 +8,7 @@ To get started with the Dynamic Form App, follow these steps:
 
 ### Prerequisites
 
-Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine. node js lts version.
 
 ### Installation
 
@@ -55,6 +55,19 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+
+#Project Structure
+- src/formData.json: Contains the form structure and fields in a JSON format, which is used to dynamically generate the form.
+
+- src/components: This folder contains the main components:
+
+ - DynamicForm: This component is responsible for managing the dynamic form creation based on the JSON structure from formData.json.
+ -  RenderFields: This component handles rendering the individual form inputs (such as text fields, dropdowns, etc.) passed by DynamicForm or from formData.json.
+ -  Sidebar and Navbar: These components are used for layout and navigation purposes.
+src/templates/Home.js: All the components are imported and rendered inside this template. The dynamic form and its associated data are managed here.
+
+ -  App.js: The Home template and formData.json are imported into App.js to initialize the main application structure and logic.
 
 ## Learn More
 
